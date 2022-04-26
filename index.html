@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>Weather Dashboard</title>
     <style rel="stylesheet" href="./assets/style.css"></style>
-</head>
-<body>
+  </head>
+  <div class="container row">
+    <header class="card-panel indigo">
+      <h2>Weather Dashboard</h2>
+    </header>
+  </div>
+  <body>
+    <div class="container row">
+      <div class="card-panel indigo accent-1 col l7">
+        <h3>Select the City:</h3>
+      </div>
+    </div>
+    <div class="container row">
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <button id="searchBtn" type="submit">
+                    <i class="material-icons">search</i></label>
+                  </button>
+                  <textarea id="textarea1" class="materialize-textarea" type="text"></textarea>
+                  <label for="textarea1">Search City</label>
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+    <!-- Add search history -->
+    <div class="col s12 m7">
+        <h2 class="header">Current Weather</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p id="temp"></p>
+              <p id="wind"></p>
+              <p id="humidity"></p>
+              <p id="uv"></p>
+            </div>
+            <div class="card-action">
+              <a href="#"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p> 5 Day Forecast</p>
+        </div>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#test1">Test 1</a></li>
+            <li class="tab"><a href="#test2">Test 2</a></li>
+            <li class="tab"><a href="#test3">Test 3</a></li>
+            <li class="tab"><a href="#test4">Test 1</a></li>
+            <li class="tab"><a href="#test5">Test 2</a></li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="test1">Test 1</div>
+          <div id="test2">Test 2</div>
+          <div id="test3">Test 3</div>
+          <div id="test4">Test 2</div>
+          <div id="test5">Test 3</div>
+        </div>
+      </div>
     <script src="./assets/script.js"></script>
-</body>
+  </body>
 </html>

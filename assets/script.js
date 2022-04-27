@@ -1,7 +1,7 @@
 // add city search function
 window.onload=function() {
 var searchBtn = document.getElementById("#searchBtn");
-var cityInput = document.getElementById("#textarea1")
+var cityInput = document.getElementById("#textAreaInput")
 var temp = document.getElementById("#temp")
 var wind = document.getElementById("#wind")
 var humdidity = document.getElementById("#humidity")
@@ -26,5 +26,3 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityInput.value+'&app
 
 
 // text area js resizing code for city search ui. 
-$('#textarea1').val('city');
-M.textareaAutoResize($('#textarea1'));

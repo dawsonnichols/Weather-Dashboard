@@ -26,5 +26,5 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityInput.value+'&app
 
 
 // text area js resizing code for city search ui. 
-$('#textarea1').val('New Text');
+$('#textarea1').val('city');
 M.textareaAutoResize($('#textarea1'));

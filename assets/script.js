@@ -56,7 +56,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&e
             var windData = "Wind Speed: " + data.current.wind_speed;
             var humidityData = "Humidity: " + data.current.humidity; 
             var uvData = "UV data: " + data.daily[0].uvi; 
-            var day1Data = data.daily[1].temp.max; 
+            var day1Data = "Day 1: " + data.daily[1].temp.max; + data.daily[1].humidity + data.daily[1].wind_speed; 
         day1.innerHTML = day1Data; 
         temp.innerHTML = temperatureData; 
         wind.innerHTML = windData; 
@@ -66,12 +66,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&e
     } else {
         return Promise.reject(response); 
     }
-        
-
-        cityDisplay.innerHTML = cityName;
-        temp.innerHTML = temperatureData; 
-        wind.innerHTML = windData; 
-        humidity.innerHTML = humidityData; 
         
      })
      .catch(function(error) {

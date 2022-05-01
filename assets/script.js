@@ -137,14 +137,22 @@ searchBtn.addEventListener("click", function (event) {
     });
 
   // / add search history in the form of buttons
+  var cities = []
   $(document).ready(function () {
       $(".searchBtn").on("click", function() {
         let text = $(this).sibling("#textAreaInput").val(); 
-        localStorage.setItem(text); 
-        console.log(localStorage); 
+        cities.push(text);
+        localStorage.setItem('searchHistory', JSON.stringify(cities));
+        console.log('searchHistory');
+        
       })
     
     })
-  localStorage.setItem("searchHistory");
-  historyButtons = localStorage.getItem("searchHistory");
+  for (var i = 0; i < cities.length; i++){
+   if (JSON.parse(localStorage.getItem('searchHistory')) <= cities[i]) {
+     return searchHistory; 
+   }
+  }
+  
+  
 });

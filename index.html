@@ -31,6 +31,7 @@
       <div class="card-panel indigo accent-1 col l7">
         <h3>Select the City:</h3>
       </div>
+      <p id="searchHistory" class="history col l4 indigo lighten-1 "></p>
     </div>
     <div class="container row">
         <div class="row">
@@ -43,6 +44,7 @@
                   <input type="text" id="textAreaInput">
                   <label for="textAreaInput">Search City</label>
                 </div>
+                
               </div>
             </form>
           </div>
@@ -56,6 +58,7 @@
           <div class="card-stacked">
             <div class="card-content">
             <h3 id="cityName"></h3>
+              <h4 id="currentDay"></h4>
               <p id="temp"></p>
               <p id="wind"></p>
               <p id="humidity"></p>
@@ -71,23 +74,30 @@
         <div class="card-content">
           <h3> 5 Day Forecast</h3>
         </div>
-        <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
-            <li class="tab" id="fiveDayTitle1"><a href="#test1"></a></li>
-            <li class="tab" id="fiveDayTitle2"><a href="#test2"></a></li>
-            <li class="tab" id="fiveDayTitle3"><a href="#test3"></a></li>
-            <li class="tab" id="fiveDayTitle4"><a href="#test4"></a></li>
-            <li class="tab" id="fiveDayTitle5"><a href="#test5"></a></li>
+        <div class="row">
+          <ul id="fiveDayStyle" class="fiveDayStyle ">
+            <li class="tab col l2" id="fiveDayTitle1"><a href="#test1"></a></li>
+            <li class="tab col l2" id="fiveDayTitle2"><a href="#test2"></a></li>
+            <li class="tab col l2" id="fiveDayTitle3"><a href="#test3"></a></li>
+            <li class="tab col l2" id="fiveDayTitle4"><a href="#test4"></a></li>
+            <li class="tab col l2" id="fiveDayTitle5"><a href="#test5"></a></li>
           </ul>
         </div>
-        <div class="card-content grey lighten-4">
-          <div id="test1">Test 1</div>
-          <div id="test2">Test 2</div>
-          <div id="test3">Test 3</div>
-          <div id="test4">Test 2</div>
-          <div id="test5">Test 3</div>
+
+  
+      
+        <div class="card grey lighten-4 row ">
+
+          <div class="col l2" id="fiveDayInfoOne"></div>
+          <div class="col l2" id="fiveDayInfoTwo"></div>
+          <div class="col l2" id="fiveDayInfoThree"></div>
+          <div class="col l2" id="fiveDayInfoFour"></div>
+          <div class="col l2" id="fiveDayInfoFive"></div>
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>

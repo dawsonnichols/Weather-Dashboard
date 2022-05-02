@@ -7,6 +7,7 @@ var temp = document.getElementById("temp");
 var wind = document.getElementById("wind");
 var humidity = document.getElementById("humidity");
 var uv = document.getElementById("uv");
+let icon = document.getElementById("icon"); 
 let lat = 0;
 let lon = 0;
 var day1 = document.getElementById("fiveDayTitle1");
@@ -21,58 +22,88 @@ var fiveDayInfoTwoCall = document.getElementById("fiveDayInfoTwo");
 var fiveDayInfoThreeCall = document.getElementById("fiveDayInfoThree");
 var fiveDayInfoFourCall = document.getElementById("fiveDayInfoFour");
 var fiveDayInfoFiveCall = document.getElementById("fiveDayInfoFive");
+var cities = [];
+
 // put api information of currently selected city into main box
 
-searchBtn.addEventListener("click", function (event) {
+$("#searchBtn").on("click", function (event) {
   event.preventDefault();
+  let text = cityInput.value;
+  cities.push(text);
+  localStorage.setItem("searchHistory", JSON.stringify(cities));
+  console.log(text);
+  console.log(cities);
+  displayCityhistory = JSON.parse(localStorage.getItem("searchHistory"));
+  console.log(displayCityhistory);
+  JSON.parse(localStorage.getItem("searchHistory"));
+  const button = document.createElement("button");
+  document.getElementById("searchHistory").appendChild(button);
+  button.innerHTML = text; 
+
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       cityInput.value +
       "&limit=1&appid=b497240b0e51a78d8e70e5314eea6385"
-  ).then(function (response) {
-    if (response.ok) {
-      return response.json().then((data) => {
-        console.log(data);
-        lat = data[0].lat;
-        lon = data[0].lon;
-        console.log(lat, lon);
-        var cityName = data[0].name;
-        cityDisplay.innerHTML = cityName;
-      });
-    } else {
-      return Promise.reject(response);
-    }
-  });
-
-  fetch(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-      lat +
-      "&lon=" +
-      lon +
-      "&exclude=visibility&appid=b497240b0e51a78d8e70e5314eea6385"
   )
     .then(function (response) {
-      // console.log(response);
       if (response.ok) {
-        return response.json().then((data) => {
+        return response.json();
+      }
+    })
+
+    .then((data) => {
+      console.log(data);
+      lat = data[0].lat;
+      lon = data[0].lon;
+      console.log(lat, lon);
+      var cityName = data[0].name;
+      cityDisplay.innerHTML = cityName;
+      fetch(
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+          lat +
+          "&lon=" +
+          lon +
+          "&exclude=visibility&appid=b497240b0e51a78d8e70e5314eea6385"
+      )
+        .then(function (response) {
+          // console.log(response);
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
           console.log(data);
           console.log(data);
-        //   const currentDate = new Date(data.current.dt * 1000);
-        //   console.log(currentDate);
-        //   const day = currentDate.get("year");
-        //   const month = currentDate.getMonth() + 1;
-        //   const year = currentDate.getFullYear();
-        //   const hour = currentDate.getHours();
-        //   const minute = currentDate.getMinutes();
-          
-        //   " (" + month + "/" + day + "/" + year + ") " + hour + ":" + minute;
-        //   timeText.innerHTML = currentDate;
+          //   const currentDate = new Date(data.current.dt * 1000);
+          //   console.log(currentDate);
+          //   const day = currentDate.get("year");
+          //   const month = currentDate.getMonth() + 1;
+          //   const year = currentDate.getFullYear();
+          //   const hour = currentDate.getHours();
+          //   const minute = currentDate.getMinutes();
+
+          //   " (" + month + "/" + day + "/" + year + ") " + hour + ":" + minute;
+          //   timeText.innerHTML = currentDate;
           var temperatureData = "Temperature: " + data.current.temp;
           var windData = "Wind Speed: " + data.current.wind_speed;
           var humidityData = "Humidity: " + data.current.humidity;
-          var uvData = "UV data: " + data.daily[0].uvi;
+          var uvData = "UV data: " + data.current.uvi;
+          var iconData = data.current.weather[0].icon; 
+          var iconurl = "http://openweathermap.org/img/w/" + iconData + ".png";
+          $('#icon').attr('src', iconurl);
           fiveDayStyle.classList.add("teal");
-
+          let uvColor = document.createElement("span"); 
+          
+          if (data.current.uvi < 5 ) {
+            uvColor.setAttribute("class", "green accent-4"); 
+          }
+          else if (data.current.uvi < 9) {
+            uvColor.setAttribute("class", "yellow accent-4")
+          }
+          else {
+            uvColor.setAttribute("class", "red accent-4");
+          }
+          uv.append(uvColor); 
           var day1Data = "Tomorrow ";
           var fiveDayInfoOne =
             " Temperature: " +
@@ -127,32 +158,15 @@ searchBtn.addEventListener("click", function (event) {
           fiveDayInfoThreeCall.innerHTML = fiveDayInfoThree;
           fiveDayInfoFourCall.innerHTML = fiveDayInfoFour;
           fiveDayInfoFiveCall.innerHTML = fiveDayInfoFive;
+          icon.innerHTML = iconData; 
+        })
+        .catch(function (error) {
+          console.log(error);
         });
-      } else {
-        return Promise.reject(response);
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
     });
-
-  // / add search history in the form of buttons
-  var cities = []
-  $(document).ready(function () {
-      $(".searchBtn").on("click", function() {
-        let text = $(this).sibling("#textAreaInput").val(); 
-        cities.push(text);
-        localStorage.setItem('searchHistory', JSON.stringify(cities));
-        console.log('searchHistory');
-        
-      })
-    
-    })
-  for (var i = 0; i < cities.length; i++){
-   if (JSON.parse(localStorage.getItem('searchHistory')) <= cities[i]) {
-     return searchHistory; 
-   }
-  }
-  
-  
 });
+// / add search history in the form of buttons
+
+for (var i = 0; i < cities.length; i++) {
+  cities[i];
+}

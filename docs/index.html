@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Weather Dashboard</title>
+    <style rel="stylesheet" href="./assets/style.css"></style>
+  </head>
+  <div class="container row">
+    <header class="card-panel indigo">
+      <h2>Weather Dashboard</h2>
+    </header>
+  </div>
+  <body>
+    <div class="container row">
+      <div class="card-panel indigo accent-1 col l7">
+        <h3>Select the City:</h3>
+      </div>
+      <p id="searchHistory" class="history col l4 indigo lighten-1 "></p>
+    </div>
+    <div class="container row">
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col l7">
+                  <button id="searchBtn" type="submit">
+                    <i class="material-icons">search</i></label>
+                  </button>
+                  <input type="text" id="textAreaInput">
+                  <label for="textAreaInput">Search City</label>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+    </div>
+    <!-- Add search history -->
+    <div class="col s12 m7">
+        <h2 class="header">Current Weather</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+            <h3 id="cityName"></h3>
+              <h4 id="currentDay"></h4>
+              <p id="temp"></p>
+              <p id="wind"></p>
+              <p id="humidity"></p>
+              <p id="uv"></p>
+              <img id="icon"></img> 
+            </div>
+            <div class="card-action">
+              <a href="#"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h3> 5 Day Forecast</h3>
+        </div>
+        <div class="row">
+          <ul id="fiveDayStyle" class="fiveDayStyle ">
+            <li class="tab col l2" id="fiveDayTitle1"><a href="#test1"></a></li>
+            <li class="tab col l2" id="fiveDayTitle2"><a href="#test2"></a></li>
+            <li class="tab col l2" id="fiveDayTitle3"><a href="#test3"></a></li>
+            <li class="tab col l2" id="fiveDayTitle4"><a href="#test4"></a></li>
+            <li class="tab col l2" id="fiveDayTitle5"><a href="#test5"></a></li>
+          </ul>
+        </div>
+
+  
+      
+        <div class="card grey lighten-4 row ">
+
+          <div class="col l2" id="fiveDayInfoOne"></div>
+          <div class="col l2" id="fiveDayInfoTwo"></div>
+          <div class="col l2" id="fiveDayInfoThree"></div>
+          <div class="col l2" id="fiveDayInfoFour"></div>
+          <div class="col l2" id="fiveDayInfoFive"></div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
